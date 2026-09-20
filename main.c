@@ -31,8 +31,8 @@ User *user = NULL;
  */
 
 void clear_buffer() {
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF);
+    int character;
+    while ((character = getchar()) != '\n' && character != EOF);
     
     /*
      * Evita problemas com o armazenamento de elementos
@@ -57,12 +57,13 @@ void borrow_book(int book_quantity) {
     scanf("%d", &book_code_query);
     clear_buffer();
 
-    for (int i = 0; i < book_quantity; i += 1) {
-        if (book[i].book_code == book_code_query) {
-            if (book[i].book_amount > 0) {
-                book[i].book_amount -= 1;
+    for (int index = 0; index < book_quantity; index += 1) {
+        if (book[index].book_code == book_code_query) {
+            if (book[index].book_amount > 0) {
+                book[index].book_amount -= 1;
                 
-                printf("O empréstimo do livro foi realizado com sucesso. Ainda há %d exemplares restantes.\n", book[i].book_amount);
+                printf("O empréstimo do livro foi realizado com sucesso.\n");
+                printf("Ainda há %d exemplares restantes.\n", book[index].book_amount);
             }
             
             else {
