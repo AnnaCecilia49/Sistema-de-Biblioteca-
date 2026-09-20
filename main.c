@@ -2,57 +2,94 @@
 #include <stdlib.h>
 #include <string.h>
 
-const char* coming_soon =
-"A library system that does something. Coming soon!";
-
-int main(int argc, char *argv[]) {
-    printf("%s\n", coming_soon);
-    return EXIT_SUCCESS;
-}
-
-//Andressa
-#define MAX_USUARIOS 100
-#define TAM_NOME 50
-#define TAM_TELEFONE 15
-
-// estrutura para guardar os dados do usuario 
 typedef struct {
-    int codigo;
-    char nome[TAM_NOME];
-    char telefone[TAM_TELEFONE];
-} Usuario;
+    int   book_code;
+    int   book_amount;
+    char* book_author;
+    char* book_title;
+} Book;
 
-Usuario usuarios[MAX_USUARIOS];
-int totalUsuarios = 0;
+typedef struct {
+    int   user_phone;
+    int   user_code;
+    char* user_name;
+} User;
 
-//limpa o buffer antes de usar o fgets
-void limparBuffer() {
+
+Book *book = NULL;
+
+/*
+ * Ponteiro de livros no escopo global para que
+ * todas as funções tenham acesso a ele.
+ */
+
+User *user = NULL;
+
+/*
+ * Ponteiro de usuários no escopo global para que
+ * todas as funções tenham acesso a ele.
+ */
+
+void clear_buffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
+    
+    /*
+     * Evita problemas com o armazenamento de elementos
+     * digitados pelo utilizador do programa.
+     */
 }
 
-//cadastra um novo usuário
-void cadastrarUsuario() {
-    if (totalUsuarios >= MAX_USUARIOS) {
-        printf("Limites máximo de usuários atingido!\n");
+void borrow_book(int book_quantity) {
+    if (book_quantity == 0) {
+        printf("\nAinda não há nenhum livro cadastrado no sistema.\n");
         return;
     }
 
-    Usuario novo;
-    novo.codigo = totalUsuarios + 1;
+    int book_code_query;
+    printf("\nDigite o código do livro que deseja pegar emprestado... ");
+    
+    /*
+     * Dispondo do código do livro, torna-se mais fácil
+     * realizar uma busca.
+     */
+    
+    scanf("%d", &book_code_query);
+    clear_buffer();
 
-    printf("\n--- Cadastro de Usuário ---\n");
-    printf("Nome: ");
-    limparBuffer();
-    fgets(novo.nome, TAM_NOME, stdin);
-    novo.nome[strcspn(novo.nome, "\n")] = '\0';
+    for (int i = 0; i < book_quantity; i += 1) {
+        if (book[i].book_code == book_code_query) {
+            if (book[i].book_amount > 0) {
+                book[i].book_amount -= 1;
+                
+                printf("O empréstimo do livro foi realizado com sucesso. Ainda há %d exemplares restantes.\n", book[i].book_amount);
+            }
+            
+            else {
+                printf("Desculpe, este livro encontra-se esgotado no momento.\n");
+            }
+            
+            return;
+        }
+    }
+    
+    printf("Não foi possível encontrar um livro com o código %d.\n", book_code_query);
+}
 
-    printf("Telefone: ");
-    fgets(novo.telefone, TAM_TELEFONE, stdin);
-    novo.telefone[strcspn(novo.telefone, "\n")] = '\0';
-
-    usuarios[totalUsuarios] = novo;
-    totalUsuarios++;
-
-    printf("\nUsuário cadastrado com sucesso! Código: %d\n", novo.codigo);
+int main(int argc, char *argv[]) {
+    int book_quantity = 0;
+    
+    /*
+     * Esta variável guarda a quantidade de livros
+     * existentes no âmbito do ponteiro "book".
+     */
+    
+    int user_quantity = 0;
+    
+    /*
+     * Esta variável guarda a quantidade de livros
+     * existentes no âmbito do ponteiro "user".
+     */
+       
+    return EXIT_SUCCESS;
 }
