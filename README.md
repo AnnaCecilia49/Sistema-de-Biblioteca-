@@ -29,3 +29,15 @@ Ciência e Tecnologia do Estado do Ceará - IFCE.
 <!-- Roniele  - [?] -->
 <!-- Francine - [?] -->
 <!-- Andressa - [?] -->
+### Compilação do Projeto
+
+Para qualquer um que for testar o código todo, recomenda-se a compilação utilizando o GCC no terminal (seja via MSYS2 no Windows PowerShell ou no terminal nativo do Linux):
+
+```bash
+# Compilando o arquivo
+gcc main.c -o biblioteca
+
+# Executando o sistema
+./biblioteca
+
+```
