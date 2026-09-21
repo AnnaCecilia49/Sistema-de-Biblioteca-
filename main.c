@@ -103,10 +103,10 @@ int main(int argc, char *argv[]) {
         printf("7. Sair\n");
         printf("Escolha uma opcao: ");
         
-        if (scanf("%d", &menu) != 1) {
-            clear_buffer();
-            continue;
-        }
+        scanf("%d", &menu)
+        clear_buffer();
+           
+        
 
         switch (menu) {
             case 1:
