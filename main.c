@@ -91,6 +91,53 @@ int main(int argc, char *argv[]) {
      * Esta variável guarda a quantidade de livros
      * existentes no âmbito do ponteiro "user".
      */
-       
+    int menu; // esta variavel vai ser usada para uso do menu
+      do {
+        printf("\n========== MENU ==========\n");
+        printf("1. Cadastrar livro\n");
+        printf("2. Cadastrar usuario\n");
+        printf("3. Listar livros\n");
+        printf("4. Buscar livro\n");
+        printf("5. Emprestimo de livro\n");
+        printf("6. Devolucao de livro\n");
+        printf("7. Sair\n");
+        printf("Escolha uma opcao: ");
+        
+        if (scanf("%d", &menu) != 1) {
+            clear_buffer();
+            continue;
+        }
+
+        switch (menu) {
+            case 1:
+                //funcao de cadastro
+                break;
+            case 2:
+                //funcao de usuario
+                break;
+            case 3:
+                //funcao de listagem de livros
+                break;
+            case 4:
+                //funcao de busca de livro
+                break;
+            case 5:
+                borrow_book(book_quantity);
+                break;
+            case 6:
+                //funcao de devolucao
+                break;
+            case 7:
+                printf("\nEncerrando o programa...\n");
+                break;
+            default:
+                printf("\nOpcao invalida! Tente novamente.\n");
+        }
+    } while (menu != 7);
+
+
+    free(book);
+    free(user); //liberacao dos vetores apos fim de uso
+ 
     return EXIT_SUCCESS;
 }
