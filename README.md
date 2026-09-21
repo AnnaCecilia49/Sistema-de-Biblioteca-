@@ -13,7 +13,8 @@ Ciência e Tecnologia do Estado do Ceará - IFCE.
 [`cheesewizard01`](https://github.com/cheesewizard01)
 - Luan Silveira -
 [`luancarneiropessoal-tech`](https://github.com/luancarneiropessoal-tech)
-
+- Roniele -
+[`ronielefhh`](https://github.com/ronielefhh)
 <!--
     Não há nenhuma informação a respeito do nome de
     usuário destes sujeitos aqui no GitHub... Se alguém
