@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
         printf("7. Sair\n");
         printf("Escolha uma opcao: ");
         
-        scanf("%d", &menu)
+        scanf("%d", &menu);
         clear_buffer();
            
         
